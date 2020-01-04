@@ -1,15 +1,18 @@
 import createView from '../../lib/view.js';
+import TodoItemView from './TodoItem.js';
 
-const template = data => `
-  <h2>Todos:</h2>
-  <pre id="pre">${JSON.stringify(data.todos, null , 2)}</pre>
-  <form id="add-todo">
-    <label>
-      new todo:
-      <input type="text" name="content" />
-    <label>
-    <button>Add</button>
-  </form>
+const template = ({ todos }) => `
+  <div class="todo-list">
+    <h2>Todos:</h2>
+    <ul id="todos" class="todos"></ul>
+    <form id="add-todo">
+      <label>
+        new todo:
+        <input id="todo-input" type="text" name="content" placeholder="e.g: Learn piano" />
+      </label>
+      <button>Add</button>
+    </form>
+  </div>
 `;
 
 const TodoListView = createView({
@@ -21,20 +24,44 @@ const TodoListView = createView({
     }
   },
 
+  onToggleTodo(todo) {
+    this.props.TodoStore.toggleTodo(todo);
+    this.refresh();
+  },
+
+  onChangeTodo(todo, content) {
+    this.props.TodoStore.updateTodo(todo, { content });
+    this.refresh();
+  },
+
   onAddTodo(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-    this.props.TodoStore.addTodo({
+    const todo = {
       isCompleted: false,
       content: formData.get('content')
-    });
-    const newTodos = this.props.TodoStore.get('todos');
-    this.$.querySelector('#pre').innerText = JSON.stringify(newTodos, null, 2);
+    };
+    const store = this.props.TodoStore.addTodo(todo);
+    this.refresh();
+  },
+
+  renderTodo(todo) {
+    const todoItem = TodoItemView({
+      todo,
+      onToggleTodo: e => this.onToggleTodo(todo),
+      onChangeTodo: e => this.onChangeTodo(todo, e.target.value)
+    })
+
+    todoItem.render(this.$.querySelector('#todos'), 'beforeEnd');
   },
 
   render($) {
-    const form = $.querySelector('#add-todo');
-    form.addEventListener('submit', this.onAddTodo.bind(this));
+    this.props.TodoStore
+      .get('todos')
+      .forEach(todo => this.renderTodo(todo));
+
+    const $form = $.querySelector('#add-todo');
+    $form.addEventListener('submit', this.onAddTodo.bind(this));
   }
 });
 
