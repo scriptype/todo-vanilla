@@ -5,9 +5,9 @@ import TodoListView from './TodoList.js';
 
 const template = data => `
   <div class="main-container">
-    <template id="header"></template>
-    <template id="list"></template>
-    <template id="footer"></template>
+    <header id="header"></header>
+    <main id="list"></main>
+    <footer id="footer"></footer>
   </div>
 `;
 
