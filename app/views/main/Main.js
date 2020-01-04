@@ -1,25 +1,23 @@
 import createView from '../../lib/view.js';
 import HeaderView from '../../components/Header.js';
+import FooterView from '../../components/Footer.js';
+import TodoListView from './TodoList.js';
 
 const template = data => `
-  <template id="main-header"></template>
-  <pre>
-    ${JSON.stringify(data)}
-  </pre>
+  <div class="main-container">
+    <template id="header"></template>
+    <template id="list"></template>
+    <template id="footer"></template>
+  </div>
 `;
 
 const MainView = createView({
   template,
 
-  data(TodoStore) {
-    return {
-      todos: TodoStore.get('todos')
-    };
-  },
-
-  render($) {
-    const headerParent = $.querySelector('#main-header');
-    HeaderView().render(headerParent);
+  render($, data, { TodoStore }) {
+    HeaderView().render($.querySelector('#header'));
+    TodoListView({ TodoStore }).render($.querySelector('#list'));
+    FooterView().render($.querySelector('#footer'));
   }
 });
 
