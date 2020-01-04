@@ -1,5 +1,4 @@
-function createView(options) {
-  const { template, data: dataFn, render: renderFn, ...rest } = options;
+function createView({ template, data: dataFn, render: renderFn, ...rest }) {
   return props => Object.freeze({
     render(parentNode) {
       const data = dataFn ? dataFn(props) : {};
