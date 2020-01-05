@@ -1,13 +1,22 @@
 import createEventEmitter from './event-emitter.js';
 
-function createStore({ data, ...rest }) {
+function createStore({ getInitialData, api, autoSync, ...rest }) {
   const eventEmitter = createEventEmitter();
 
-  const get = key => data[key];
-  const set = (key, value) => data[key] = value;
-  const remove = key => delete data[key];
+  const data = getInitialData();
 
-  const ctx = { ...rest, get, set, remove };
+  const get = key => {
+    return data[key];
+  };
+
+  const set = (key, value) => {
+    data[key] = value;
+    if (autoSync) {
+      return api.set(key, data);
+    }
+  };
+
+  const ctx = { ...rest, get, set };
   const restWithContext = {};
   Object.keys(rest).forEach(key => {
     restWithContext[key] = rest[key].bind(ctx);
@@ -17,8 +26,7 @@ function createStore({ data, ...rest }) {
     ...restWithContext,
     ...eventEmitter,
     get,
-    set,
-    remove
+    set
   });
 };
 

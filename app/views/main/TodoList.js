@@ -44,9 +44,10 @@ const TodoListView = createView({
   },
 
   render($) {
-    this.props.TodoStore
-      .get('todos')
-      .forEach(todo => this.renderTodo(todo));
+    const todos = this.props.TodoStore.get('todos');
+    if (todos) {
+      todos.forEach(todo => this.renderTodo(todo));
+    }
 
     const addTodoForm = AddTodoView({
       onAddTodo: todo => this.onAddTodo(todo)
