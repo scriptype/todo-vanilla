@@ -8,7 +8,7 @@
 @import "./app/components/Header.css";
 @import "./app/components/Footer.css";
 
-/* Views that combine different things in them*/
+/* Views that combine different things in them */
 @import "./app/views/main/Main.css";
 
 /* Overrides */
