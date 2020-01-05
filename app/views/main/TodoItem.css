@@ -1,4 +1,6 @@
 .todo-item {
+    display: flex;
+    align-items: center;
     font-size: 1.1em;
     padding: .5em 0;
     border-bottom: 1px dashed var(--gray);
@@ -9,6 +11,7 @@
 .todo-item-content {
     border: none;
     font: inherit;
+    flex: 1;
 }
 
 .todo-item-content:focus {
