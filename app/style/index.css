@@ -1,0 +1,15 @@
+/* Foundational styling */
+@import "./variables.css";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font: normal 1em/1.4 helvetica, sans-serif;
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
+}

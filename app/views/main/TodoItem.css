@@ -1,0 +1,16 @@
+.todo-item {
+    font-size: 1.1em;
+    padding: .5em 0;
+    border-bottom: 1px dashed var(--gray);
+}
+
+.todo-item-checkbox { }
+
+.todo-item-content {
+    border: none;
+    font: inherit;
+}
+
+.todo-item-content:focus {
+    border: initial;
+}

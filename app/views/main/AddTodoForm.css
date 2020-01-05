@@ -1,0 +1,22 @@
+.add-todo-form {
+    padding: 1em 0 0;
+}
+
+.add-todo-content {
+    font-size: 1.1em;
+    padding: .25em;
+    border: none;
+    border-bottom: 1px solid var(--accent);
+}
+
+.add-todo-button {
+    appearance: none;
+    border: none;
+    font: inherit;
+    background: none;
+
+    padding: .25em .75em;
+    border-radius: var(--border-radius-second);
+    background: var(--accent);
+    color: #fff;
+}

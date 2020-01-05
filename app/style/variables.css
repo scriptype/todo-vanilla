@@ -1,0 +1,9 @@
+:root {
+    --light-gray: #f6f6f6;
+    --gray: #ccc;
+    --dark-gray: #555;
+    --accent: royalblue;
+
+    --border-radius-first: 8px;
+    --border-radius-second: 4px;
+}
