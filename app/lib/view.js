@@ -7,7 +7,7 @@ function getWrapperNode(html) {
 function createView({ template, data: dataFn, render: renderFn, ...rest }) {
   return props => Object.freeze({
     render(parentNode, mode) {
-      const data = dataFn ? dataFn(props) : {};
+      const data = dataFn ? dataFn.call(rest, props) : {};
       const html = template(data);
       const ctx = { data, props, ...rest };
 
