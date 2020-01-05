@@ -1,3 +1,10 @@
 .todo-list {
     padding: 1rem;
 }
+
+.hide-completed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-gray);
+}
