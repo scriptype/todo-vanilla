@@ -19,12 +19,11 @@ function createTodoStore({ api, autoSync }) {
     },
     updateTodo(todo, values) {
       const todos = this.get('todos');
-      const item = todos.find(t => t === todo);
       const updatedTodo = {
-        ...item,
+        ...todo,
         ...values
       };
-      const index = todos.indexOf(item);
+      const index = todos.indexOf(todo);
       this.set('todos', Object.assign([], todos, {
         [index]: updatedTodo
       }));

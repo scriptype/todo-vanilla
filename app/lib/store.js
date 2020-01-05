@@ -12,7 +12,7 @@ function createStore({ getInitialData, api, autoSync, ...rest }) {
   const set = (key, value) => {
     data[key] = value;
     if (autoSync) {
-      return api.set(key, data);
+      return api.set(key, value);
     }
   };
 
