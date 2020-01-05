@@ -1,4 +1,4 @@
-function createTodoApi({ storageKey }) {
+function createLocalStorageApi({ storageKey }) {
   return {
     set(key, value) {
       const data = {
@@ -14,4 +14,4 @@ function createTodoApi({ storageKey }) {
   };
 };
 
-export default createTodoApi;
+export default createLocalStorageApi;

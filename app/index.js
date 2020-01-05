@@ -1,8 +1,8 @@
 import MainView from './views/main/Main.js';
-import createTodoApi from './TodoApi.js'
+import createLocalStorageApi from './LocalStorageApi.js'
 import createTodoStore from './TodoStore.js';
 
-const TodoApi = createTodoApi({
+const TodoApi = createLocalStorageApi({
   storageKey: 'todos'
 });
 
