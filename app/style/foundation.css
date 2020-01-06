@@ -4,7 +4,8 @@
 
 body {
     font: normal 1em/1.4 helvetica, sans-serif;
-    height: 100vh;
+    min-height: 100vh;
+    background: var(--light-gray);
 }
 
 #app {

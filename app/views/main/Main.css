@@ -8,7 +8,6 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background: var(--light-gray);
 }
 
 .main-inner {
