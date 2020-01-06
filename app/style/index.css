@@ -1,15 +1,18 @@
-/* Foundational styling */
+/* Reset */
+@import "./reset.css";
+
+/* Variables */
 @import "./variables.css";
 
-* {
-    box-sizing: border-box;
-}
+/* Foundational styling */
+@import "./foundation.css";
 
-body {
-    font: normal 1em/1.4 helvetica, sans-serif;
-    height: 100vh;
-}
+/* Low-level components */
+@import "../components/Header.css";
+@import "../components/Footer.css";
 
-#app {
-    height: 100%;
-}
+/* Views that combine different things in them */
+@import "../views/main/Main.css";
+
+/* Helper overrides */
+@import "./helpers.css";
